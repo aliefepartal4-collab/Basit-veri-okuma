@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ben Hangi Arketipim? | Karakter Analizi Oyunu</title>
+    <!-- Modern Font: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background Dynamic Elements -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    <div class="bg-shape shape-3"></div>
+
+    <main class="app-container">
+
+        <!-- START SCREEN -->
+        <section id="start-screen" class="screen active">
+            <div class="glass-card">
+                <div class="icon-wrapper">✨</div>
+                <h1>Kişilik & Kariyer</h1>
+                <p>Kendini tanımak için hangi yolculuğa çıkmak istersin?</p>
+                <input type="text" id="kullanici-isim" placeholder="Adınızı giriniz..."
+                    style="padding: 12px; margin-bottom: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); width: 80%; text-align: center; background: rgba(0,0,0,0.2); color: white; font-family: inherit; font-size: 1.1rem; outline: none;">
+                <div class="start-options">
+
+                    <div class="start-options">
+                        <div class="start-options-row">
+                            <button id="start-character-btn" class="primary-btn alt-btn">
+                                <span>🎭 Karakter</span>
+                            </button>
+                            <button id="start-career-btn" class="primary-btn alt-btn">
+                                <span>🚀 Kariyer</span>
+                            </button>
+                        </div>
+                        <button id="start-combined-btn" class="primary-btn special-btn">
+                            <span>🔮 Kapsamlı Meslek Bul (Önerilen)</span>
+                            <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+        </section>
+
+        <!-- QUESTION SCREEN -->
+        <section id="question-screen" class="screen hidden">
+            <div class="glass-card">
+                <div class="progress-container">
+                    <span id="question-counter">Soru 1 / 10</span>
+                    <div class="progress-bar">
+                        <div id="progress-fill"></div>
+                    </div>
+                </div>
+
+                <h2 id="question-text">Soru buraya gelecek?</h2>
+
+                <div id="options-container" class="options-grid">
+                    <!-- Options injected via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- CHARACTER RESULT SCREEN -->
+        <section id="result-screen" class="screen hidden">
+            <div class="glass-card result-card">
+                <span class="result-label">Senin Arketipin:</span>
+                <div id="result-icon" class="icon-wrapper big-icon">👑</div>
+                <h1 id="result-title">Lider</h1>
+                <p id="result-desc">Açıklama metni buraya gelecek...</p>
+
+                <div class="traits-container">
+                    <div class="trait"><span class="trait-dot"></span> <span id="trait-1">Özellik 1</span></div>
+                    <div class="trait"><span class="trait-dot"></span> <span id="trait-2">Özellik 2</span></div>
+                    <div class="trait"><span class="trait-dot"></span> <span id="trait-3">Özellik 3</span></div>
+                </div>
+
+                <button id="restart-btn" class="secondary-btn">Ana Menüye Dön</button>
+            </div>
+        </section>
+
+        <!-- CAREER MAP RESULT SCREEN -->
+        <section id="career-result-screen" class="screen hidden">
+            <div class="glass-card result-card">
+                <span class="result-label">Gelişim Haritan:</span>
+                <div class="icon-wrapper big-icon career-icon">🧭</div>
+                <h1 id="career-title">Yazılım Uzmanı</h1>
+                <p id="career-desc">Cevaplarına göre senin için en uygun mesleki yönelim analiz edildi.</p>
+
+                <div class="skills-container">
+                    <!-- Skill bars injected via JS -->
+                </div>
+
+                <button id="career-restart-btn" class="secondary-btn">Ana Menüye Dön</button>
+            </div>
+        </section>
+
+        <!-- COMBINED PROFESSION RESULT SCREEN -->
+        <section id="combined-result-screen" class="screen hidden">
+            <div class="glass-card result-card">
+                <span class="result-label combined-result-label">Kapsamlı Analiz Sonucu:</span>
+                <div id="combined-result-icon" class="icon-wrapper big-icon combined-result-icon">🔮</div>
+                <h1 id="combined-title">Teknoloji CEO'su</h1>
+
+                <div class="combined-breakdown">
+                    <div class="breakdown-col">
+                        <span class="breakdown-label">Kök Karakterin</span>
+                        <div id="combined-archetype" class="breakdown-value-primary">Lider</div>
+                    </div>
+                    <div class="breakdown-divider"></div>
+                    <div class="breakdown-col breakdown-col-right">
+                        <span class="breakdown-label">Baskın Yeteneğin</span>
+                        <div id="combined-trait" class="breakdown-value-secondary">Yazılım</div>
+                    </div>
+                </div>
+
+                <!-- Salary Block -->
+                <div id="combined-salary"></div>
+
+                <p id="combined-desc"></p>
+
+                <div id="learning-section">
+                    <button id="toggle-learning-btn" class="secondary-btn">📚
+                        Meslek Bilgisi & Eğitim Yol Haritası İster misin?</button>
+
+                    <div id="learning-content" class="hidden">
+                        <h3 class="learning-heading-primary">Temel Bilgiler</h3>
+                        <p id="learning-fundamentals">...</p>
+
+                        <h3 class="learning-heading-secondary">Nereden Başlamalı? (Önerilen Kaynaklar)</h3>
+                        <ul id="learning-links">
+                            <!-- Links injected via JS -->
+                        </ul>
+                    </div>
+                </div>
+
+                <button id="combined-restart-btn" class="primary-btn special-btn">Ana Menüye Dön</button>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
